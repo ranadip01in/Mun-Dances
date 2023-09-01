@@ -3,6 +3,7 @@ const path = require('path');
 const app = express();
 const fs = require("fs");
 const bodyparser = require('body-parser');
+
 //mongoose
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://127.0.0.1:27017/contactDance')
@@ -32,11 +33,11 @@ app.set('views', path.join(__dirname,'views'));//set the views directiory
 //end-point
 app.get("/",(req, res)=>{
     const params = {};
-    res.status(200).render('home.pug',params);
+    res.status(200).render('views/home.pug',params);
 });
 app.get("/contact",(req, res)=>{
     const params = {};
-    res.status(200).render('contact.pug',params);
+    res.status(200).render('views/contact.pug',params);
 });
 //save on mongodb
 app.post("/contact",(req,res)=>{
