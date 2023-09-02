@@ -33,11 +33,11 @@ app.set('views', path.join(__dirname,'views'));//set the views directiory
 //end-point
 app.get("/",(req, res)=>{
     const params = {};
-    res.status(200).render('views/home.pug',params);
+    res.status(200).render('home.pug',params);
 });
 app.get("/contact",(req, res)=>{
     const params = {};
-    res.status(200).render('views/contact.pug',params);
+    res.status(200).render('contact.pug',params);
 });
 //save on mongodb
 app.post("/contact",(req,res)=>{
