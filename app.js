@@ -3,9 +3,10 @@ const path = require('path');
 const app = express();
 const fs = require("fs");
 const bodyparser = require('body-parser');
+
 //mongoose
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/contactDance')
+// mongoose.connect('mongodb://127.0.0.1:27017/contactDance')
 
 const port = 80;
 
