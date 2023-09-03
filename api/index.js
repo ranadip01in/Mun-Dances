@@ -41,7 +41,7 @@ app.get("/contact",(req, res)=>{
 });
 
 //save on mongodb
-app.post("/contact",(req,res)=>{
+app.post("contact",(req,res)=>{
     var myData = new Contact(req.body);
     myData.save().then(()=>{
         res.send("This item has been saved to Database");
