@@ -1,14 +1,18 @@
+// Import packages
 const express = require("express");
 const path = require('path');
-const app = express();
 const fs = require("fs");
 const bodyparser = require('body-parser');
+
+// Express specific staff
+//middlewares
+const app = express();
+app.use('/static',express.static('static')); // for serving static file
+app.use(express.urlencoded());
 
 //mongoose
 const mongoose = require('mongoose');
 // mongoose.connect('mongodb://127.0.0.1:27017/contactDance')
-
-const port = 80;
 
 //mongoose schema
 const contactSchema = new mongoose.Schema({
@@ -21,10 +25,6 @@ const contactSchema = new mongoose.Schema({
     desc: String, 
 });
 const Contact = mongoose.model('Contact', contactSchema);
-
-// Express specific staff
-app.use('/static',express.static('static')); // for serving static file
-app.use(express.urlencoded());
 
 //PUG related staff
 app.set('view engine','pug');//set the template engine as pug
@@ -39,6 +39,7 @@ app.get("/contact",(req, res)=>{
     const params = {};
     res.status(200).render('contact.pug',params);
 });
+
 //save on mongodb
 app.post("/contact",(req,res)=>{
     var myData = new Contact(req.body);
@@ -49,6 +50,7 @@ app.post("/contact",(req,res)=>{
     });
     // res.status(200).render('contact.pug');
 });
+
 // save on output.txt
 // app.post("/contact",(req,res)=>{
 //     // console.log(req.body);
@@ -64,8 +66,11 @@ app.post("/contact",(req,res)=>{
 //     const params = {MESSAGE:'Your form has been submit successfully',content:''};
 //     res.status(200).render('contact.pug',params);
 // });
+
+//port configuration
 //Start the Server
+//connection
+const port = 80;
 app.listen(port,()=>{
     console.log(`The application started successfully on port ${port}`);
-
 });
