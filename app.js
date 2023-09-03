@@ -70,7 +70,7 @@ app.post("/contact",(req,res)=>{
 //port configuration
 //Start the Server
 //connection
-const port = 80;
+const port = process.env.PORT || 80;
 app.listen(port,()=>{
     console.log(`The application started successfully on port ${port}`);
 });
